@@ -13,16 +13,16 @@ const styles = {
 const additionalLinks = (history) => {
   if (isAuthenticated()) {
     return (
-      <span>
+      <nav>
         <NavLink activeStyle={styles.active} to='/dashboard'>Dashboard</NavLink>
-        {' '}
+          {' '}
         <a href='#' onClick={() => {
           logout()
           history.push('/login')
         }}>
           Logout
         </a>
-      </span>
+      </nav>
     )
   } else {
     return (
@@ -35,11 +35,11 @@ const additionalLinks = (history) => {
 const NavBar = ({ history }) => (
   <nav>
     <NavLink exact activeStyle={styles.active} to='/'>Home</NavLink>
-    {' '}
+      {' '}
     <NavLink activeStyle={styles.active} to='/About'>About</NavLink>
-    {' '}
+      {' '}
     {additionalLinks(history)}
   </nav>
 )
 
-export default NavBar;
+export default withRouter(NavBar);
